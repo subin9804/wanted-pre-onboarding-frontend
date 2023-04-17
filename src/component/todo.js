@@ -1,6 +1,7 @@
 import {useEffect, useState, useContext} from "react";
 import {getTodos, createTodo, deleteTodo, updateTodo} from "../requests";
 import List from "./list";
+import { useNavigate } from "react-router-dom";
 import AuthContext from "./AuthContext";
 
 export default function Todo() {
@@ -10,6 +11,7 @@ export default function Todo() {
     const [todo, setTodo] = useState("");
     const [todolist, setTodolist] = useState([]);
     const {setUser} = useContext(AuthContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
         setIsLoaded(false);
@@ -74,6 +76,8 @@ export default function Todo() {
 
     function signout () {
         setUser(null);
+        localStorage.removeItem('user')
+        navigate('/signin')
     }
 
     //console.log(todo)

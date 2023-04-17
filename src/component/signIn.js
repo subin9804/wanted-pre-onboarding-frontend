@@ -23,7 +23,7 @@ export default function SignIn() {
 
             const user = await signIn(email, password)
 
-            // console.log(user);
+            console.log(user);
             
             setUser(user);
                             
@@ -69,7 +69,7 @@ export default function SignIn() {
                     className="p-2 px-4 rounded-3xl bg-green-500 font-semibold text-white border border-2 border-green-400 disabled:bg-green-300"
                     disabled={!email.trim() || !email.includes("@") || password.trim().length < 8} 
                 >
-                    <Link to="/todo">로그인</Link>
+                    로그인
                 </button>
                 <button 
                     className="p-2 px-4 rounded-3xl bg-white border border-2 border-green-400 font-semibold mx-2"
