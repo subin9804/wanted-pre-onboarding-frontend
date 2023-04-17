@@ -1,13 +1,15 @@
-import {useEffect, useState, useRef} from "react";
+import {useEffect, useState, useContext} from "react";
 import {getTodos, createTodo, deleteTodo, updateTodo} from "../requests";
 import List from "./list";
+import AuthContext from "./AuthContext";
 
 export default function Todo() {
-
+    
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [todo, setTodo] = useState("");
     const [todolist, setTodolist] = useState([]);
+    const {setUser} = useContext(AuthContext);
 
     useEffect(() => {
         setIsLoaded(false);
@@ -18,6 +20,7 @@ export default function Todo() {
             setTodolist(data);
         })
         .catch(error => {
+            setError(error)
             console.log(error)
         })
         .finally(() => setIsLoaded(true))
@@ -69,9 +72,13 @@ export default function Todo() {
         />
     ))
 
+    function signout () {
+        setUser(null);
+    }
+
     //console.log(todo)
     return (
-        <div className="w-96 p-4 mt-16 mx-auto text-center border border-green-400 border-2 px-8 pb-16 text-center">
+        <div className="w-96 p-4 mt-16 mx-auto text-center border border-green-400 border-2 px-8 pb-16 text-center relative">
             <h1 className="font-bold text-2xl">TODOLIST</h1>
             <form id="createTodo" onSubmit={handleSubmit} className="p-4 mx-auto">
                 <input 
@@ -89,6 +96,12 @@ export default function Todo() {
             <ul id="todoList">
                 {todoList}
             </ul>
+            <button 
+                className="font-semibold text-green-600 absolute right-8 bottom-6"
+                onClick={signout}
+            >
+                로그아웃
+            </button>
         </div>
     )
 }

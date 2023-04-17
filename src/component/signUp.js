@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import AuthContext from "./AuthContext";
 import { signUp } from "../requests";
-import { useNavigate, Navigate } from "react-router-dom";
+import { useNavigate, Navigate, Link } from "react-router-dom";
 
 
 export default function Signup() {
@@ -42,7 +42,7 @@ export default function Signup() {
                         <input 
                             data-testid="email-input" 
                             className="border-green-500 border rounded-full px-2"
-                            placeholder="Email address"
+                            placeholder="이메일 형식으로 작성"
                             name="email"
                             type="text"
                             onChange={({target}) => setEmail(target.value)}
@@ -55,14 +55,14 @@ export default function Signup() {
                         <input
                             data-testid="password-input" 
                             name="password"
-                            placeholder="8자리 이상 입력해주세요"
+                            placeholder="8자리 이상 입력"
                             className="border-green-500 border rounded-full px-2"
                             type="password"
                             onChange={({target}) => setPassword(target.value)}
                         />
                     </label>
                 </div>
-                {error && <p className="text-sm text-green-500">중복된 아이디가 존재합니다</p>}
+                {error && <p className="text-sm text-green-500">이미 존재하는 이메일 입니다.</p>}
                 <button 
                     data-testid="signup-button" 
                     type="submit" 
@@ -70,6 +70,11 @@ export default function Signup() {
                     disabled={!email.trim() || !email.includes("@") || password.trim().length < 8} 
                 >
                     회원가입
+                </button>
+                <button 
+                    className="p-2 px-4 rounded-3xl bg-white border border-2 border-green-400 font-semibold mx-2"
+                >
+                    <Link to="/signin">로그인</Link>
                 </button>
             </form>
         </div>
