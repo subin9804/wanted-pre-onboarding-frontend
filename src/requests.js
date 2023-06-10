@@ -1,8 +1,8 @@
-const api = "https://www.pre-onboarding-selection-task.shop"
+let api = "https://www.pre-onboarding-selection-task.shop/";
 
 // 회원가입
 export async function signUp (email, password) {
-    const res = await fetch(`${api}/auth/signup`, {
+    const res = await fetch(`${api}auth/signup`, {
         method: 'POST',
         headers: {'Content-Type' : 'application/json'},
         body: JSON.stringify({
@@ -21,7 +21,7 @@ export async function signUp (email, password) {
 
 // 로그인
 export async function signIn(email, password) {
-    const res = await fetch(`${api}/auth/signin`, {
+    const res = await fetch(`${api}auth/signin`, {
         method: 'POST',
         headers: {'Content-Type' : 'application/json'},
         body: JSON.stringify({
@@ -40,7 +40,7 @@ export async function signIn(email, password) {
 
 // todo 추가
 export async function createTodo(todo) {
-    const res = await fetch(`${api}/todos`, {
+    const res = await fetch(`${api}todos`, {
         method: "POST",
         headers: {
             "Authorization" : "Bearer " + JSON.parse(localStorage.getItem('user')).access_token,
@@ -58,7 +58,7 @@ export async function createTodo(todo) {
 
 // todo 조회
 export async function getTodos() {
-    const res = await fetch(`${api}/todos`, {
+    const res = await fetch(`${api}todos`, {
         method: 'GET',
         headers: {"Authorization" : "Bearer " + JSON.parse(localStorage.getItem('user')).access_token}
     })
@@ -72,7 +72,7 @@ export async function getTodos() {
 
 // todo 수정
 export async function updateTodo(id, todo, isCompleted) {
-    const res = await fetch(`${api}/todos/${id}`, {
+    const res = await fetch(`${api}todos/${id}`, {
         method: "PUT",
         headers: {
             "Authorization" : "Bearer " + JSON.parse(localStorage.getItem('user')).access_token,
@@ -93,7 +93,7 @@ export async function updateTodo(id, todo, isCompleted) {
 
 // todo 삭제
 export async function deleteTodo(id) {
-    const res = await fetch(`${api}/todos/${id}`, {
+    const res = await fetch(`${api}todos/${id}`, {
         method: "DELETE",
         headers: {'Authorization' : 'Bearer ' + JSON.parse(localStorage.getItem('user')).access_token}
     });

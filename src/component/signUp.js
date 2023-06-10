@@ -44,7 +44,7 @@ export default function Signup() {
                             className="border-green-500 border rounded-full px-2"
                             placeholder="이메일 형식으로 작성"
                             name="email"
-                            type="text"
+                            type="email"
                             onChange={({target}) => setEmail(target.value)}
                         />
                     </label>
@@ -62,7 +62,7 @@ export default function Signup() {
                         />
                     </label>
                 </div>
-                {error && <p className="text-sm text-green-500">이미 존재하는 이메일 입니다.</p>}
+                {error && <p className="text-sm text-green-500">회원가입에 실패했습니다. <br/> 다시 시도해주세요.</p>}
                 <button 
                     data-testid="signup-button" 
                     type="submit" 
@@ -71,11 +71,7 @@ export default function Signup() {
                 >
                     회원가입
                 </button>
-                <button 
-                    className="p-2 px-4 rounded-3xl bg-white border border-2 border-green-400 font-semibold mx-2"
-                >
-                    <Link to="/signin">로그인</Link>
-                </button>
+                <a href="/signin" className="block pt-4 text-blue-700 underline">로그인 하러가기</a>
             </form>
         </div>
     );
