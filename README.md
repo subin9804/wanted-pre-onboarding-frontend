@@ -1,16 +1,16 @@
 # 원티드 프리온보딩 프론트엔드 선발과제
 
-## 📌지원자 성명
+### 📌지원자 성명
 - 이름: 이수빈
 
-## 📌프로젝트 실행방법
+### 📌프로젝트 실행방법
 ```
 $ git clone
 $ npm install
 $ npm start
 ```
 
-## 📌데모영상
+### 📌데모영상
 #### ✅ Assignment 1. 회원가입과 로그인 페이지에 이메일과 비밀번호의 유효성 검사기능을 구현  
 #### ✅ Assignment 2. 회원가입을 진행하고 회원가입이 정상적으로 완료되었을 시 /signin 경로로 이동  
 #### ✅ Assignment 3. 로그인이 정상적으로 완료되었을 시 /todo 경로로 이동
@@ -29,5 +29,5 @@ $ npm start
 #### ✅ Assignment 10. 수정기능 구현
 <img width=400 height=500 src="https://github.com/subin9804/wanted-pre-onboarding-frontend/assets/116933612/2676f7a7-f553-44b0-84f7-c46951fae2c0">
 
-## 📌배포URL
+### 📌배포URL
 https://wanted-frontend.netlify.app/signIn
