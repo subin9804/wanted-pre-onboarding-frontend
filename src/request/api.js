@@ -1,0 +1,1 @@
+export const api = "https://www.pre-onboarding-selection-task.shop/";

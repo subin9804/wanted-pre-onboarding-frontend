@@ -1,5 +1,5 @@
 import {useEffect, useState, useContext} from "react";
-import {getTodos, createTodo, deleteTodo, updateTodo} from "../requests";
+import {getTodos, createTodo, deleteTodo} from "../request/todo"
 import List from "./list";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "./AuthContext";
@@ -28,9 +28,9 @@ export default function Todo() {
         .finally(() => setIsLoaded(true))
     }, [todo])
 
-    if (!isLoaded) {
-        return <p>fetching data...</p>
-    }
+    // if (!isLoaded) {
+    //     return <p>fetching data...</p>
+    // }
 
     // todo 추가
     async function handleSubmit(e) {

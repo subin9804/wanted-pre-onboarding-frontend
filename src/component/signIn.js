@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { signIn } from "../requests";
+import { signIn } from "../request/user";
 import { useNavigate, Navigate, Link } from "react-router-dom";
 import AuthContext from "./AuthContext";
 
@@ -22,8 +22,6 @@ export default function SignIn() {
             setError(null);
 
             const user = await signIn(email, password)
-
-            console.log(user);
             
             setUser(user);
                             
@@ -38,19 +36,20 @@ export default function SignIn() {
         <div id="signIn">
             <form onSubmit={handleSubmit} className="w-96 p-4 mt-16 mx-auto text-center border border-green-400 border-8 px-8 pb-16 ">
                 <h1 className="font-bold text-4xl py-12">로그인</h1>
-                <div className="pb-4">
+                <div className="pb-8">
                     <label className="w-full flex justify-between">
                         <span>이메일</span>
                         <input 
                             data-testid="email-input" 
                             className="border-green-500 border rounded-full px-2"
                             placeholder="이메일 형식으로 작성"
-                            type="text"
+                            type="email"
                             onChange={({target}) => setEmail(target.value)}
                         />
                     </label>
+                    {!email.includes('@') && email.length > 0 ? <p className="float-right pb-2 text-green-500">이메일 형식으로 입력해주세요.</p> : null}
                 </div>
-                <div className="pb-4">
+                <div className="pb-8">
                     <label className="w-full flex justify-between">
                         <span>비밀번호</span>
                         <input
@@ -61,6 +60,7 @@ export default function SignIn() {
                             onChange={({target}) => setPassword(target.value)}
                         />
                     </label>
+                    {password.length > 0 && password.length < 8 ? <p className="float-right pb-2 text-green-500">8자리 이상 입력해주세요.</p> : null}
                 </div>
                 {error && <p className="text-sm text-green-500">이메일 또는 비밀번호가 일치하지 않습니다.</p>}
                 <button 
@@ -71,11 +71,7 @@ export default function SignIn() {
                 >
                     로그인
                 </button>
-                <button 
-                    className="p-2 px-4 rounded-3xl bg-white border border-2 border-green-400 font-semibold mx-2"
-                >
-                    <Link to="/signup">회원가입</Link>
-                </button>
+                <a href="/signup" className="block pt-4 text-blue-700 underline">회원가입 하러가기</a>
             </form>
         </div>
     );

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { updateTodo } from "../requests";
+import { updateTodo } from "../request/todo";
 
 
 export default function List({id, todo, isCompleted, todolist, setTodolist, handledelete}) {
@@ -11,6 +11,7 @@ export default function List({id, todo, isCompleted, todolist, setTodolist, hand
         console.log(id)
         try {
             const updatedlist = todolist.map(item => {
+                
                 if(item.id === id) {
                     updateTodo(id, newTodo, item.isCompleted)
                     return {...item, todo: newTodo}

@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import AuthContext from "./AuthContext";
-import { signUp } from "../requests";
+import { signUp } from "../request/user";
 import { useNavigate, Navigate, Link } from "react-router-dom";
 
 
@@ -36,7 +36,7 @@ export default function Signup() {
         <div id="signUp">
             <form onSubmit={handleSubmit} className="w-96 p-4 mt-16 mx-auto text-center border border-green-400 border-8 px-8 pb-16 ">
                 <h1 className="font-bold text-4xl py-12">회원가입</h1>
-                <div className="pb-4">
+                <div className="pb-8">
                     <label className="w-full flex justify-between">
                         <span>이메일</span>
                         <input 
@@ -48,8 +48,9 @@ export default function Signup() {
                             onChange={({target}) => setEmail(target.value)}
                         />
                     </label>
+                    {!email.includes('@') && email.length > 0 ? <p className="float-right pb-2 text-green-500">이메일 형식으로 입력해주세요.</p> : null}
                 </div>
-                <div className="pb-4">
+                <div className="pb-8">
                     <label className="w-full flex justify-between">
                         <span>비밀번호</span>
                         <input
@@ -61,6 +62,7 @@ export default function Signup() {
                             onChange={({target}) => setPassword(target.value)}
                         />
                     </label>
+                    {password.length > 0 && password.length < 8 ? <p className="float-right pb-2 text-green-500">8자리 이상 입력해주세요.</p> : null}
                 </div>
                 {error && <p className="text-sm text-green-500">회원가입에 실패했습니다. <br/> 다시 시도해주세요.</p>}
                 <button 
