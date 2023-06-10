@@ -9,6 +9,7 @@ export default function Todo() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [todo, setTodo] = useState("");
+    const [newTodo, setNewTodo] = useState("");
     const [todolist, setTodolist] = useState([]);
     const {setUser} = useContext(AuthContext);
     const navigate = useNavigate();
@@ -36,10 +37,12 @@ export default function Todo() {
     async function handleSubmit(e) {
         try {
             e.preventDefault();
-            const create = document.getElementById("create");
 
-            await createTodo(create.value)
-            .then(setTodo(create.value))
+
+            await createTodo(newTodo)
+            .then(setTodo(newTodo));
+
+            setNewTodo("")
 
         } catch(error) {
             console.log(error)
@@ -88,7 +91,9 @@ export default function Todo() {
                 <input 
                     data-testid="new-todo-input" 
                     className="border border-green-400 rounded-full px-2 w-2/3 outline-none"
-                    id="create"
+                    autoComplete="off"
+                    onChange={(e) => setNewTodo(e.target.value)}
+                    value={newTodo}
                 />
                 <button 
                     data-testid="new-todo-add-button" 

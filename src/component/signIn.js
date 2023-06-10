@@ -34,16 +34,17 @@ export default function SignIn() {
 
     return (
         <div id="signIn">
-            <form onSubmit={handleSubmit} className="w-96 p-4 mt-16 mx-auto text-center border border-green-400 border-8 px-8 pb-16 ">
+            <form onSubmit={handleSubmit} className="w-96 p-4 mt-16 mx-auto text-center border border-green-400 border-8 px-8 pb-16">
                 <h1 className="font-bold text-4xl py-12">로그인</h1>
                 <div className="pb-8">
                     <label className="w-full flex justify-between">
                         <span>이메일</span>
                         <input 
-                            data-testid="email-input" 
+                            data-testid="email-input"
                             className="border-green-500 border rounded-full px-2"
                             placeholder="이메일 형식으로 작성"
                             type="email"
+                            autoComplete="off"
                             onChange={({target}) => setEmail(target.value)}
                         />
                     </label>

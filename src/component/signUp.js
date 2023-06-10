@@ -40,11 +40,12 @@ export default function Signup() {
                     <label className="w-full flex justify-between">
                         <span>이메일</span>
                         <input 
-                            data-testid="email-input" 
+                            data-testid="email-input"
                             className="border-green-500 border rounded-full px-2"
                             placeholder="이메일 형식으로 작성"
                             name="email"
                             type="email"
+                            autoComplete="off"
                             onChange={({target}) => setEmail(target.value)}
                         />
                     </label>
